@@ -26,32 +26,6 @@ function [X,T] = GetPol(N,M,l,b)
   
     L = M*l ; h = L / N ; 
 
-    % ----- 
-    % Computing X from T
-    % ----- 
-%     Xc1 = h*cumsum(T); Xc1 = [0 0 0 ; Xc1] ; 
-%     X1mean = h*0.5* (Xc1(1,1) + 2*sum(Xc1(2:end-1,1)) + Xc1(end,1))/L ;
-%     X2mean = h*0.5* (Xc1(1,2) + 2*sum(Xc1(2:end-1,2)) + Xc1(end,2))/L ;
-%     X3mean = h*0.5* (Xc1(1,3) + 2*sum(Xc1(2:end-1,3)) + Xc1(end,3))/L ;
-%     Xc1 = Xc1- [X1mean X2mean X3mean] ; 
-
-% ----- 
-    % Computing X explicitly
-    % -----   
-%     k = -M/2 : -M/2+1;  
-%     X12 = (l/2) * a  * [sinh(k*l) ; cosh(k*l)] / (sinh(l/2)) ;
-%     Xx1 = linspace(X12(1,1),X12(1,2),N/M+1); 
-%     Xx2 = linspace(X12(2,1),X12(2,2),N/M+1); 
-%     Xx = [Xx1 ; Xx2]; 
-%     R = [cosh(l) sinh(l); sinh(l) cosh(l)] ; 
-%     for j = 0 : M-2
-%         XXaux = R^j*Xx ;
-%         XX(:,j*N/M+(1:N/M)) = XXaux(:,1:N/M);
-%     end
-%     j = M-1; 
-%     XXaux = R^j*Xx ;
-%     XX(:,j*N/M+(1:N/M+1)) = XXaux;
-    
     k = -M/2 : -M/2+1;  
     X12 = (l/2) * a  * [sinh(k*l) ; cosh(k*l)] / (sinh(l/2)) ;
     Xx1 = linspace(X12(1,1),X12(1,2),N/M+1); 
